@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <style>
+    label { display: block; margin-top: 10px; }
+    .error { color: red; font-size: 0.9em; }
+    .form-section { margin-bottom: 15px; }
+  </style>
+  <script>
+    // Function to validate form before submission
+    function validateForm(event) {
+      // Prevent default form submission to handle validation
+      event.preventDefault();
+
+      // Clear any previous error messages
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+      // Get form input values
+      const name = document.forms["contactForm"]["name"].value.trim();
+      const email = document.forms["contactForm"]["email"].value.trim();
+      const phone = document.forms["contactForm"]["phone"].value.trim();
+      const message = document.forms["contactForm"]["message"].value.trim();
+
+      let valid = true;
+
+      // Validate name
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        valid = false;
+      }
+
+      // Validate email using regex pattern
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email.";
+        valid = false;
+      }
+
+      // Validate phone number (10 digits)
+      const phonePattern = /^\d{10}$/;
+      if (!phonePattern.test(phone)) {
+        document.getElementById("phoneError").textContent = "Phone must be 10 digits.";
+        valid = false;
+      }
+
+      // Validate message
+      if (message === "") {
+        document.getElementById("messageError").textContent = "Message is required.";
+        valid = false;
+      }
+
+      // Submit form if valid
+      if (valid) {
+        document.forms["contactForm"].submit();
+      }
+    }
+
+    // Function to preview data using GET method
+    function previewData(event) {
+      event.preventDefault();
+
+      const form = document.forms["contactForm"];
+      const queryString = new URLSearchParams(new FormData(form)).toString();
+
+      // Display preview below the form
+      const preview = document.getElementById("preview");
+      preview.innerHTML = `
+        <h3>Preview:</h3>
+        <p><strong>Name:</strong> ${form.name.value}</p>
+        <p><strong>Email:</strong> ${form.email.value}</p>
+        <p><strong>Phone Number:</strong> ${form.phone.value}</p>
+        <p><strong>Message:</strong> ${form.message.value}</p>
+        <p><strong>Preferred Contact Method:</strong> ${form.contact.value}</p>
+        <p><strong>Inquiry Type:</strong> ${form.inquiry.value}</p>
+      `;
+    }
+  </script>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+  <form name="contactForm" method="POST" action="/submit">
+    
+    <!-- Name Field -->
+    <div class="form-section">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <div class="error" id="nameError"></div>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-section">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email">
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <!-- Phone Field -->
+    <div class="form-section">
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone">
+      <div class="error" id="phoneError"></div>
+    </div>
+
+    <!-- Message Field -->
+    <div class="form-section">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" cols="40"></textarea>
+      <div class="error" id="messageError"></div>
+    </div>
+
+    <!-- Preferred Contact Method (Radio Buttons) -->
+    <div class="form-section">
+      <label>Preferred Contact Method:</label>
+      <input type="radio" name="contact" value="Email" checked> Email
+      <input type="radio" name="contact" value="Phone"> Phone
+      <input type="radio" name="contact" value="Both"> Both
+    </div>
+
+    <!-- Inquiry Type (Dropdown) -->
+    <div class="form-section">
+      <label for="inquiry">Inquiry Type:</label>
+      <select id="inquiry" name="inquiry">
+        <option value="">Select an option</option>
+        <option value="General Inquiry">General Inquiry</option>
+        <option value="Support Request">Support Request</option>
+        <option value="Feedback">Feedback</option>
+      </select>
+    </div>
+
+    <!-- Submit and Preview Buttons -->
+    <div class="form-section">
+      <button type="button" onclick="validateForm(event)">Submit</button>
+      <button type="button" onclick="previewData(event)">Preview</button>
+    </div>
+  </form>
+
+  <!-- Section for displaying preview -->
+  <div id="preview"></div>
+
+</body>
+</html>

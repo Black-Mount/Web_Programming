@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Travel Stories</title>
+  <style>
+    body {
+      /* Base font and padding for clear spacing */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      /* Main title style */
+      font-size: 2em;
+    }
+
+    table {
+      /* Table width, spacing and layout */
+      width: 60%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      /* Add colorful borders and cell padding for readability */
+      border: 2px solid #4CAF50;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      /* Bold header cells with light background */
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      /* Alternating row colors for better readability */
+      background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    img {
+      /* Gallery image size and transition for hover effect */
+      width: 200px;
+      height: auto;
+      transition: opacity 0.3s ease;
+      border-radius: 8px;
+    }
+
+    img:hover {
+      /* Change opacity on hover for visual feedback */
+      opacity: 0.7;
+    }
+
+    .info-section {
+      /* Style for the detailed info sections at the bottom */
+      margin-top: 60px;
+      max-width: 600px;
+    }
+
+    .info-section h2 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Travel Destinations</h1>
+
+  <!-- Table listing destinations with images linked to detailed sections -->
+  <table>
+    <tr>
+      <th>Destination</th>
+      <th>Attraction</th>
+    </tr>
+    <tr>
+      <td>Paris</td>
+      <td>
+        <!-- Eiffel Tower image linking to info -->
+        <a href="#eiffel">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Eiffel Tower">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Rome</td>
+      <td>
+        <!-- Colosseum image linking to info -->
+        <a href="#colosseum">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg" alt="Colosseum">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>New York</td>
+      <td>
+        <!-- Statue of Liberty image linking to info -->
+        <a href="#statue">
+          <img src="https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Statue of Liberty">
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Detailed info for Eiffel Tower -->
+  <div class="info-section" id="eiffel">
+    <h2>Eiffel Tower</h2>
+    <p>The Eiffel Tower, an iron marvel soaring 330 meters above Paris, has been a global icon since its completion in 1889. Originally criticized by some of France’s leading artists, it has become the city’s beloved symbol of romance and innovation. Visitors can climb its levels for breathtaking panoramic views of the Seine River and the historic cityscape, especially magical at sunset when the tower lights up and sparkles every hour on the hour.</p>
+  </div>
+
+  <!-- Detailed info for Colosseum -->
+  <div class="info-section" id="colosseum">
+    <h2>Colosseum</h2>
+    <p>The Colosseum in Rome is one of the world’s most impressive ancient monuments. Completed in 80 AD, this massive amphitheater could hold over 50,000 spectators who gathered to watch gladiatorial battles, animal hunts, and dramatic reenactments. Today, the Colosseum stands as a powerful reminder of the grandeur and complexity of Roman engineering and culture, attracting millions who walk through its ancient corridors to imagine the echoes of history within its stone walls.</p>
+  </div>
+
+  <!-- Detailed info for Statue of Liberty -->
+  <div class="info-section" id="statue">
+    <h2>Statue of Liberty</h2>
+    <p>The Statue of Liberty rises proudly from Liberty Island in New York Harbor, greeting travelers and immigrants since 1886 as a universal symbol of freedom and democracy. Designed by French sculptor Frédéric Auguste Bartholdi and gifted by France to the United States, Lady Liberty holds her torch high, lighting the way to a better future. A visit offers the chance to climb to her crown, explore the museum inside the pedestal, and admire stunning views of Manhattan’s skyline and Ellis Island nearby.</p>
+  </div>
+</body>
+</html>
